@@ -1,3 +1,6 @@
+import 'package:firstappmds/widgets/AboutMe.dart';
+import 'package:firstappmds/widgets/FeedPosts.dart';
+import 'package:firstappmds/widgets/FriendsList.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,81 +14,212 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo KILLIAN yo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+        title: 'Killian HERZER',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // TRY THIS: Try running your application with "flutter run". You'll see
+          // the application has a purple toolbar. Then, without quitting the app,
+          // try changing the seedColor in the colorScheme below to Colors.green
+          // and then invoke "hot reload" (save your changes or press the "hot
+          // reload" button in a Flutter-supported IDE, or press "r" if you used
+          // the command line to start the app).
+          //
+          // Notice that the counter didn't reset back to zero; the application
+          // state is not lost during the reload. To reset the state, use hot
+          // restart instead.
+          //
+          // This works for code too, not just values: Most code changes can be
+          // tested with just a hot reload.
+          textTheme: const TextTheme(
+            bodyText1: TextStyle(color: Colors.white),
+            bodyText2: TextStyle(color: Colors.white),
+            headline1: TextStyle(color: Colors.white),
+            headline2: TextStyle(color: Colors.white),
+            headline3: TextStyle(color: Colors.white),
+            headline4: TextStyle(color: Colors.white),
+            headline5: TextStyle(color: Colors.white),
+            headline6: TextStyle(color: Colors.white),
+            subtitle1: TextStyle(color: Colors.white),
+            subtitle2: TextStyle(color: Colors.white),
+            caption: TextStyle(color: Colors.white),
+            button: TextStyle(color: Colors.white),
+            overline: TextStyle(color: Colors.white),
+          ),
+          scaffoldBackgroundColor: Colors.black54,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black45),
+          useMaterial3: true,
+        ),
 //      home: const MyHomePage(title: 'Flutter jfjf Home Page'),
-        home: const BasicUI()
-    );
+        home: const BasicUI());
   }
 }
 
 class BasicUI extends StatelessWidget {
-  const BasicUI({Key? key}) : super(key: key);
+  const BasicUI({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<String> imageUrls = ["images/charles.jpg", "images/abdel.jpg", "images/jeje.jpg", "images/elon.jpg", "images/mark.jpg"];
+    List<List<dynamic>> postsList = [
+      ['Valentin Folliguet', 'images/charles.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt', 196, 14],
+      ['Valentin Folliguet', 'images/jeje.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt', 230, 1474],
+      ['Valentin Folliguet', 'images/abdel.jpg', 'Lorem ipsum dolor.', 6, 1]
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Basic UI"),
+        title: const Text(
+          "Profile",
+          style: TextStyle(color: Colors.white),
+        ),
         elevation: 3,
-        shadowColor: Colors.white,
+        backgroundColor: Colors.lightBlue,
         centerTitle: true,
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(child: Container(color: Colors.blue)),
-                Expanded(child: Container(color: Colors.red)),
-              ],
+      body: SingleChildScrollView (
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+                child: SizedBox(
+                  height: 200,
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        height: 150,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("images/banner.jpg"),
+                            fit: BoxFit.cover,
+                            alignment: Alignment.center,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 3,
+                                color: Colors.black,
+                              ),
+                              borderRadius: BorderRadius.circular(100),
+                              image: DecorationImage(
+                                image: AssetImage("images/profilepic.jpg"),
+                                fit: BoxFit.cover,
+                                alignment: Alignment.centerRight,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
-          ),
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(child: Container(color: Colors.green)),
-              ],
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      "Obé 🪐",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                          flex: 4,
+                          child: TextButton(
+                            style: ButtonStyle(
+                              fixedSize:
+                                  MaterialStateProperty.all(Size.fromHeight(50)),
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.lightBlue),
+                              side: MaterialStateProperty.all(
+                                  BorderSide(color: Colors.lightBlue, width: 2)),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              'Modifier le profil',
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
+                          )),
+                      Spacer(),
+                      Expanded(
+                          flex: 2,
+                          child: TextButton(
+                            style: ButtonStyle(
+                              fixedSize:
+                                  MaterialStateProperty.all(Size.fromHeight(50)),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.lightBlue),
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              '✛',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                          )),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(child: Container(color: Colors.cyanAccent)),
-                Expanded(child: Container(color: Colors.black)),
-                Expanded(child: Column(
-                  children: <Widget>[
-                    Expanded(child: Container(color: Colors.yellow)),
-                    Expanded(child: Container(color: Colors.pink)),
-                    Expanded(child: Container(color: Colors.purple)),
-                    Expanded(child: Container(color: Colors.orange)),
-                  ],
-                )),
-              ],
+            AboutMeWidget(
+              location: "Marseille",
+              occupation: "Étudiant",
+              relationshipStatus: "Célibataire",
             ),
-          ),
-          Expanded(
-            child: Container(color: Colors.brown),
-          ),
-        ],
+            FriendsListWidget(
+                imageUrls: imageUrls
+            ),
+            FeedPostsWidget(
+                postsList: postsList
+            )
+          ],
+        ),
       ),
     );
   }
